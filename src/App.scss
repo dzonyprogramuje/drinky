@@ -1,5 +1,13 @@
-// Projekt color variables
-$dark-color: #202227;
-$light-color: #2b2d36;
-$base-color: #ebcf4e;
-$white-color: white;
+@import "./variables";
+
+.main-container {
+  background-color: $color-dark;
+  padding: 16px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

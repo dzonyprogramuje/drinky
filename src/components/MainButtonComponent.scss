@@ -1,0 +1,13 @@
+@import "../variables";
+
+.main-button-container {
+  height: 60px;
+  width: 100%;
+  background-color: $color-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: $font-base;
+  color: $color-dark;
+}
