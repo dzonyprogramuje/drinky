@@ -6,19 +6,18 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
   gap: 10%;
-}
 
-h1 {
-  color: $color-white;
-  font-size: $font-huge;
-}
+  h1 {
+    color: $color-white;
+    font-size: $font-huge;
+  }
 
-h2 {
-  color: $color-light;
-  font-size: $font-base;
-  font-weight: 300;
+  h2 {
+    color: $color-light;
+    font-size: $font-base;
+    font-weight: 300;
+  }
 }
 
 img.alkohol {
@@ -27,6 +26,7 @@ img.alkohol {
 }
 
 .start-screen-text-container {
+  margin: 10% 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

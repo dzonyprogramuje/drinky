@@ -15,7 +15,7 @@ export default function StartScreen() {
         <h1>Drinky</h1>
         <h2>Pijacka gra alkoholowa</h2>
 
-        <MainButtonComponent to="/game">Start</MainButtonComponent>
+        <MainButtonComponent to="/level">Start</MainButtonComponent>
       </div>
     </div>
   );

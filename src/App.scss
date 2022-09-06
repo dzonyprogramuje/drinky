@@ -8,6 +8,15 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
+}
+
+.small-icon {
+  fill: white;
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
 }

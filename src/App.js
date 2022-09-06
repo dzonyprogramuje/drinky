@@ -1,7 +1,10 @@
 import "./App.scss";
-import StartScreen from "./screens/StartScreen";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import StartScreen from "./screens/StartScreen";
+import LevelScreen from "./screens/LevelScreen";
+import GameScreen from "./screens/GameScreen";
 
 function App() {
   return (
@@ -11,10 +14,13 @@ function App() {
           <Route path="/" exact>
             <StartScreen />
           </Route>
-          {/* <Route path="/game" exact>
+          <Route path="/level" exact>
+            <LevelScreen />
+          </Route>
+          <Route path="/game" exact>
             <GameScreen />
           </Route>
-          <Route path="/over">
+          {/* <Route path="/over">
             <OverScreen />
           </Route> */}
         </Switch>

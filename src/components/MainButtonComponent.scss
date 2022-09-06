@@ -11,4 +11,9 @@
   font-size: $font-base;
   color: $color-dark;
   text-decoration: none;
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
 }
