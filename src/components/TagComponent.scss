@@ -1,0 +1,12 @@
+@import "../variables";
+
+.tag-component-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex: 1;
+  padding: 0.65rem 0;
+  background-color: $color-light;
+  font-size: $font-small;
+}
