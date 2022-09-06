@@ -14,7 +14,8 @@ export default function StartScreen() {
       <div className="start-screen-text-container">
         <h1>Drinky</h1>
         <h2>Pijacka gra alkoholowa</h2>
-        <MainButtonComponent>Start</MainButtonComponent>
+
+        <MainButtonComponent to="/game">Start</MainButtonComponent>
       </div>
     </div>
   );

@@ -1,6 +1,12 @@
 import React from "react";
 import "./MainButtonComponent.scss";
 
-export default function MainButtonComponent({ children }) {
-  return <div className="main-button-container">{children}</div>;
+import { Link } from "react-router-dom";
+
+export default function MainButtonComponent({ children, to }) {
+  return (
+    <Link to={to} className="main-button-container">
+      <div>{children}</div>
+    </Link>
+  );
 }
