@@ -25,6 +25,10 @@
     width: 100%;
     color: white;
   }
+
+  input::placeholder {
+    color: var(--color-light-second);
+  }
 }
 
 .input-icon {
