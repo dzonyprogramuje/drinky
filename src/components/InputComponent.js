@@ -4,6 +4,9 @@ import "./InputComponent.scss";
 
 export default function InputComponent({ placeholder, icon }) {
   return (
-    <input type="text" className="input-container" placeholder={placeholder} />
+    <div className="input-container">
+      <input type="text" placeholder={placeholder} />
+      <img className="input-icon" src={icon} />
+    </div>
   );
 }
