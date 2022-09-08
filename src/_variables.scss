@@ -14,4 +14,12 @@
   --gap-standard: 8px;
   --gap-big: 12px;
   --gap-huge: 16px;
+
+  --round-small: 4px;
+  --round-base: 8px;
+  --round-big: 16px;
+}
+
+.icon-base {
+  fill: var(--color-base);
 }
