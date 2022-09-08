@@ -9,4 +9,13 @@
   padding: 0.65rem 0;
   background-color: $color-light;
   font-size: $font-small;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &[active] {
+    border: 1px solid $color-base;
+  }
 }

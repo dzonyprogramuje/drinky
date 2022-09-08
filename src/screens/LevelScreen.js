@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./LevelScreen.scss";
+import AddIcon from "../images/add-icon.png";
+
 import MenuBarComponent from "../components/MenuBarComponent";
 import TagComponent from "../components/TagComponent";
 import InputComponent from "../components/InputComponent";
@@ -18,7 +20,7 @@ export default function LevelScreen() {
       >
         <MenuBarComponent title="Level" />
         <div className="level-screen-tag-container">
-          <TagComponent title="Easy" />
+          <TagComponent title="Easy" active="" />
           <TagComponent title="Middle" />
           <TagComponent title="Hard" />
         </div>
@@ -28,7 +30,7 @@ export default function LevelScreen() {
         <p>Add players to the game!</p>
       </div>
 
-      <InputComponent placeholder="Player name" icon="icon src" />
+      <InputComponent placeholder="Player name" icon={AddIcon} />
     </div>
   );
 }

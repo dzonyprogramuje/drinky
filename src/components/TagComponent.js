@@ -1,6 +1,10 @@
 import React from "react";
 import "./TagComponent.scss";
 
-export default function TagComponent({ title }) {
-  return <div className="tag-component-container">{title}</div>;
+export default function TagComponent({ title, active }) {
+  return (
+    <div className="tag-component-container" active={active}>
+      {title}
+    </div>
+  );
 }
