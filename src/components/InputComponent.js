@@ -1,12 +1,14 @@
 import React from "react";
 
+import { AiOutlineUserAdd as AddUser } from "react-icons/ai";
+
 import "./InputComponent.scss";
 
-export default function InputComponent({ placeholder, icon }) {
+export default function InputComponent({ placeholder }) {
   return (
     <div className="input-container">
       <input type="text" placeholder={placeholder} />
-      <img className="input-icon" src={icon} />
+      <AddUser className="icon-base" size="1.5rem" />
     </div>
   );
 }

@@ -2,18 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./MenuBarComponent.scss";
-import LeftIcon from "../images/left-icon.png";
-import MenuIcon from "../images/menu-icon.png";
-
+import { IoMdArrowRoundBack as BackIcon } from "react-icons/io";
+import { AiOutlineMenu as MenuIcon } from "react-icons/ai";
 export default function MenuBarComponent({ title }) {
   return (
     <div className="menubar-container">
       <Link to="/">
-        <img className="small-icon" src={LeftIcon} height="32" width="32" />
+        <BackIcon className="icon-base" size="1.5rem" />
       </Link>
       <h2>{title}</h2>
       <Link to="/">
-        <img className="small-icon" src={MenuIcon} height="24" width="24" />
+        <MenuIcon className="icon-base" size="1.5rem" />
       </Link>
     </div>
   );
