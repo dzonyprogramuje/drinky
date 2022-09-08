@@ -1,7 +1,7 @@
 @import "./variables";
 
 .main-container {
-  background-color: $color-dark;
+  background-color: var(--color-dark);
   padding: 16px 16px 32px;
   height: 100vh;
   width: 100vw;

@@ -9,13 +9,13 @@
   gap: 10%;
 
   h1 {
-    color: $color-white;
-    font-size: $font-huge;
+    color: var(--color-white);
+    font-size: var(--font-huge);
   }
 
   h2 {
-    color: $color-light-second;
-    font-size: $font-base;
+    color: var(--color-light-second);
+    font-size: var(--font-base);
     font-weight: 300;
   }
 }
@@ -31,5 +31,5 @@ img.alkohol {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: $gap-big;
+  gap: var(--gap-big);
 }

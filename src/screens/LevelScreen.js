@@ -6,6 +6,7 @@ import AddIcon from "../images/add-icon.png";
 import MenuBarComponent from "../components/MenuBarComponent";
 import TagComponent from "../components/TagComponent";
 import InputComponent from "../components/InputComponent";
+import PlayerComponent from "../components/PlayerComponent";
 
 export default function LevelScreen() {
   return (
@@ -28,7 +29,8 @@ export default function LevelScreen() {
 
       <div className="level-screen-players">
         <div className="players-add">
-          <p>Add players to the game!</p>
+          <PlayerComponent name="Johny" />
+          {/* <p>Add players to the game!</p> */}
         </div>
       </div>
 
