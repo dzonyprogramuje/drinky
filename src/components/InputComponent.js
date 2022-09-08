@@ -8,7 +8,7 @@ export default function InputComponent({ placeholder }) {
   return (
     <div className="input-container">
       <input type="text" placeholder={placeholder} />
-      <AddUser className="icon-base" size="1.5rem" />
+      <AddUser className="icon-base" />
     </div>
   );
 }

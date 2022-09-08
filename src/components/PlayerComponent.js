@@ -18,7 +18,7 @@ export default function PlayerComponent({ name }) {
   return (
     <StyledPlayer>
       {name}
-      <DeleteUser className="icon-base" size="1.5rem" />
+      <DeleteUser className="icon-base" />
     </StyledPlayer>
   );
 }
