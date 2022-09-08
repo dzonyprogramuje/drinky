@@ -29,12 +29,12 @@ export default function LevelScreen() {
 
       <div className="level-screen-players">
         <div className="players-add">
-          <PlayerComponent name="Johny" />
+          {/* <PlayerComponent name="Johny" />
           <PlayerComponent name="Sucker" />
           <PlayerComponent name="Duper" />
           <PlayerComponent name="Sex ist the best ever" />
-          <PlayerComponent name="Lolek" />
-          {/* <p>Add players to the game!</p> */}
+          <PlayerComponent name="Lolek" /> */}
+          <p>Add players to the game!</p>
         </div>
       </div>
 

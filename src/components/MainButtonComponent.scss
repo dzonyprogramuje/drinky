@@ -15,5 +15,6 @@
   &:hover,
   &:active {
     cursor: pointer;
+    background-color: var(--color-base-hover);
   }
 }
