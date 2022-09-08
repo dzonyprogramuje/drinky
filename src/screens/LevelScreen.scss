@@ -16,6 +16,19 @@
   }
 
   .level-screen-players {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    .players-add {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
     p {
       color: $color-light-second;
     }

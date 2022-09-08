@@ -27,7 +27,9 @@ export default function LevelScreen() {
       </div>
 
       <div className="level-screen-players">
-        <p>Add players to the game!</p>
+        <div className="players-add">
+          <p>Add players to the game!</p>
+        </div>
       </div>
 
       <InputComponent placeholder="Player name" icon={AddIcon} />
