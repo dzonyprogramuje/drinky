@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function TimerComponent() {
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(50);
   const [actuall, setActuall] = useState(950);
   const howMuchPXIsOneSecond = actuall / time;
 
@@ -27,14 +27,33 @@ export default function TimerComponent() {
 
     .circle-container {
       rotate: -90deg;
+      position: relative;
     }
 
     circle {
-      fill: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .inner {
       stroke: var(--color-base);
       stroke-width: 10px;
       stroke-dasharray: 950;
       stroke-dashoffset: calc(950 - ${actuall});
+      z-index: 1;
+    }
+
+    .outer {
+      stroke: var(--color-light);
+      stroke-width: 10px;
+      stroke-dasharray: 950;
+      stroke-dashoffset: 0;
+      z-index: -100;
+    }
+
+    circle {
+      fill: none;
       /* animation: all 5s linear; */
     }
 
@@ -63,7 +82,20 @@ export default function TimerComponent() {
     <StyledTimerContainer>
       <div className="circle-container">
         <svg height="320" width="320">
-          <circle cx="160" cy="160" r="150" stroke-linecap="round" />
+          <circle
+            className="outer"
+            cx="160"
+            cy="160"
+            r="150"
+            stroke-linecap="round"
+          />
+          <circle
+            className="inner"
+            cx="160"
+            cy="160"
+            r="150"
+            stroke-linecap="round"
+          />
         </svg>
       </div>
       <p>{showTimeAsString()}</p>
