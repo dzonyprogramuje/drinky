@@ -13,7 +13,7 @@ export default function MenuBarComponent({ title }) {
         <BackIcon className="icon-base icon-big" />
       </Link>
       <h2>{title}</h2>
-      <Link to="/">
+      <Link to="/game">
         <MenuIcon className="icon-base icon-big" />
       </Link>
     </div>
