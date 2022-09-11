@@ -1,16 +1,51 @@
 import React from "react";
-
-import "./LevelScreen.scss";
-import AddIcon from "../images/add-icon.png";
+import styled from "styled-components";
 
 import MenuBarComponent from "../components/MenuBarComponent";
 import TagComponent from "../components/TagComponent";
 import InputComponent from "../components/InputComponent";
 import PlayerComponent from "../components/PlayerComponent";
 
+const StyledLevelScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+
+  .level-screen-tag-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .level-screen-players {
+    display: flex;
+    width: 100%;
+    .players-add {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-big);
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: var(--color-light-second);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    p {
+      color: var(color-light-second);
+    }
+  }
+`;
+
 export default function LevelScreen() {
   return (
-    <div className="game-screen-container">
+    <StyledLevelScreen>
       <div
         style={{
           width: "100%",
@@ -21,7 +56,7 @@ export default function LevelScreen() {
       >
         <MenuBarComponent title="Level" />
         <div className="level-screen-tag-container">
-          <TagComponent title="Easy" active="" />
+          <TagComponent title="Easy" active />
           <TagComponent title="Middle" />
           <TagComponent title="Hard" />
         </div>
@@ -38,7 +73,7 @@ export default function LevelScreen() {
         </div>
       </div>
 
-      <InputComponent placeholder="Player name" icon={AddIcon} />
-    </div>
+      <InputComponent placeholder="Player name" />
+    </StyledLevelScreen>
   );
 }
