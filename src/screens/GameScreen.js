@@ -24,11 +24,11 @@ const StyledGameScreen = styled.div`
 export default function GameScreen() {
   return (
     <StyledGameScreen>
-      <MenuBarComponent />
+      <MenuBarComponent title="Johny" />
       <TimerComponent time="60" />
       <div className="game-screen-buttons">
         <MainButtonComponent>Nie piję</MainButtonComponent>
-        <MainButtonComponent fully="">Piję</MainButtonComponent>
+        <MainButtonComponent fully>Piję</MainButtonComponent>
       </div>
     </StyledGameScreen>
   );

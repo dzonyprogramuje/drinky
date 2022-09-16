@@ -25,6 +25,9 @@ export default function TimerComponent() {
     width: 320px;
     height: 320px;
 
+    // TODO: without overflow hidden does not work hover on buttons  :O Why?
+    overflow: hidden;
+
     .circle-container {
       rotate: -90deg;
       position: relative;

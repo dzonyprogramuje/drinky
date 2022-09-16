@@ -17,6 +17,11 @@ export default function MainButtonComponent({ children, to, fully }) {
     border: ${fully ? `none` : `2px solid var(--color-base)`};
 
     & a {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       color: ${fully ? `var(--color-dark)` : `white`};
     }
