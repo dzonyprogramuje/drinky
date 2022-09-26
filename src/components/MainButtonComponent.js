@@ -30,7 +30,7 @@ export default function MainButtonComponent({ children, to, fully }) {
     &:active {
       cursor: pointer;
       background-color: var(--color-base-hover);
-      border: none;
+      /* border: none; */
     }
   `;
 

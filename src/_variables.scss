@@ -2,7 +2,7 @@
   --color-dark: #202227;
   --color-light: #2b2d36;
   --color-base: #ebcf4e;
-  --color-base-hover: #bb9800;
+  --color-base-hover: #edc411;
   --color-white: white;
   --color-light-second: #b3b3b3;
 
@@ -28,6 +28,10 @@
   &:hover {
     fill: var(--color-base-hover);
   }
+}
+
+.icon-small {
+  font-size: 1rem;
 }
 
 .icon-big {

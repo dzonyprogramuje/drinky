@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function TimerComponent() {
-  const [time, setTime] = useState(50);
+  const [time, setTime] = useState(5);
   const [actuall, setActuall] = useState(950);
   const howMuchPXIsOneSecond = actuall / time;
 
