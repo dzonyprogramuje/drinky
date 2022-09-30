@@ -43,7 +43,7 @@ const StyledLevelScreen = styled.div`
   }
 `;
 
-export default function LevelScreen() {
+export default function LevelScreen({ level, setLevel }) {
   return (
     <StyledLevelScreen>
       <div
@@ -55,10 +55,25 @@ export default function LevelScreen() {
         }}
       >
         <MenuBarComponent title="Level" />
-        <div className="level-screen-tag-container">
-          <TagComponent title="Easy" active />
-          <TagComponent title="Middle" />
-          <TagComponent title="Hard" />
+        <div
+          className="level-screen-tag-container"
+          onClick={(e) => setLevel(e.target.attributes.value.value)}
+        >
+          <TagComponent
+            title="Easy"
+            value={1}
+            active={level == 1 ? true : false}
+          />
+          <TagComponent
+            title="Middle"
+            value={2}
+            active={level == 2 ? true : false}
+          />
+          <TagComponent
+            title="Hard"
+            value={3}
+            active={level == 3 ? true : false}
+          />
         </div>
       </div>
 

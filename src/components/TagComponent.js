@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function TagComponent({ title, active }) {
+export default function TagComponent({ title, active, value }) {
   const StyledTagComponent = styled.div`
     display: flex;
     align-items: center;
@@ -19,5 +19,9 @@ export default function TagComponent({ title, active }) {
     }
   `;
 
-  return <StyledTagComponent active={active}>{title}</StyledTagComponent>;
+  return (
+    <StyledTagComponent active={active} value={value}>
+      {title}
+    </StyledTagComponent>
+  );
 }

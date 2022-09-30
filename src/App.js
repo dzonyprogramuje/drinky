@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -28,6 +29,8 @@ const StyledApp = styled.div`
 `;
 
 function App() {
+  const [level, setLevel] = useState(1);
+
   return (
     <StyledApp>
       <Router>
@@ -36,7 +39,7 @@ function App() {
             <StartScreen />
           </Route>
           <Route path="/level" exact>
-            <LevelScreen />
+            <LevelScreen level={level} setLevel={setLevel} />
           </Route>
           <Route path="/game" exact>
             <GameScreen />
