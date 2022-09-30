@@ -13,9 +13,11 @@ export default function TagComponent({ title, active, value }) {
     font-size: var(--font-small);
     color: ${active ? `var(--color-dark)` : `white`};
 
-    &:hover {
+    &:hover,
+    &:active {
       cursor: pointer;
-      border: 1px solid var(--color-base);
+      border: ${active ? `none` : `1px solid var(--color-base);`};
+      margin: 0 -1px;
     }
   `;
 

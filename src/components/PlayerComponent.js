@@ -12,6 +12,13 @@ const StyledPlayer = styled.div`
   height: 50px;
   background-color: var(--color-light);
   border-radius: var(--round-base);
+
+  &:hover,
+  &:active {
+    /* background-color: var(--color-light-hover); */
+    border: 1px solid var(--color-base);
+    margin: 0 -1px;
+  }
 `;
 
 export default function PlayerComponent({ name }) {
