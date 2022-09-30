@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function TimerComponent() {
+export default function TimerComponent({ screen, setScreen, players }) {
   const [time, setTime] = useState(5);
   const [actuall, setActuall] = useState(950);
   const howMuchPXIsOneSecond = actuall / time;
@@ -75,7 +75,13 @@ export default function TimerComponent() {
         setNewCircle();
         setTime((prevState) => prevState - 1);
       } else {
-        // we do something, when time is gone
+        if (screen + 1 < players.length) {
+          setScreen((prevState) => prevState + 1);
+          setTime(5);
+        } else {
+          setScreen(0);
+          setTime(5);
+        }
       }
     }, 1000);
     return () => clearTimeout(timer);

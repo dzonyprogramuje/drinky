@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import MenuBarComponent from "../components/MenuBarComponent";
@@ -36,27 +36,45 @@ const StyledGameScreen = styled.div`
     font-size: 1rem;
   }
 `;
-export default function GameScreen() {
+export default function GameScreen({ screen, setScreen, players, setPlayers }) {
+  const handleClick = (value) => {
+    console.log("clicked");
+    if (value) {
+      console.log("value true");
+      // setPlayers((prevState) => {
+      //   prevState[screen].drunk += 1;
+      // });
+    } else {
+      // setPlayers((prevState) => {
+      //   prevState[screen].lifes -= 1;
+      // });
+    }
+  };
+
   return (
     <StyledGameScreen>
-      <MenuBarComponent title="Johny" />
+      <MenuBarComponent title={players[screen].name} />
       <div className="action-item-container">
         <ActionItemComponent
-          text="3"
+          text={players[screen].lifes}
           icon={<FaHeart className="icon-base icon-small" />}
         />
         <ActionItemComponent
-          text="10"
+          text={players[screen].drunk}
           icon={<FaGlassWhiskey className="icon-base icon-small" />}
         />
       </div>
-      <TimerComponent time="60" />
+      <TimerComponent screen={screen} setScreen={setScreen} players={players} />
       <p className="game-screen-todo">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
       </p>
       <div className="game-screen-buttons">
-        <MainButtonComponent>Nie piję</MainButtonComponent>
-        <MainButtonComponent fully>Piję</MainButtonComponent>
+        <MainButtonComponent onClick={() => handleClick(false)}>
+          Nie piję
+        </MainButtonComponent>
+        <MainButtonComponent fully onClick={() => handleClick(true)}>
+          Piję
+        </MainButtonComponent>
       </div>
     </StyledGameScreen>
   );

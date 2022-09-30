@@ -31,6 +31,7 @@ const StyledApp = styled.div`
 function App() {
   const [level, setLevel] = useState(1);
   const [players, setPlayers] = useState([]);
+  const [gameScreen, setGameScreen] = useState(0);
 
   return (
     <StyledApp>
@@ -48,7 +49,12 @@ function App() {
             />
           </Route>
           <Route path="/game" exact>
-            <GameScreen />
+            <GameScreen
+              screen={gameScreen}
+              setScreen={setGameScreen}
+              players={players}
+              setPlayers={setPlayers}
+            />
           </Route>
           {/* <Route path="/over">
             <OverScreen />
