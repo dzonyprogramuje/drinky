@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
 import { AiOutlineUserAdd as AddUser } from "react-icons/ai";
@@ -33,11 +33,26 @@ const StyledInput = styled.div`
     color: var(--color-light-second);
   }
 `;
-export default function InputComponent({ placeholder }) {
+export default function InputComponent({ placeholder, setPlayers }) {
+  const nameInput = useRef(null);
+
+  const addUser = (e) => {
+    const { value } = nameInput.current;
+    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
+      setPlayers((prevState) => [...prevState, value]);
+      nameInput.current.value = "";
+    }
+  };
+
   return (
     <StyledInput>
-      <input type="text" placeholder={placeholder} />
-      <AddUser className="icon-base" />
+      <input
+        type="text"
+        placeholder={placeholder}
+        ref={nameInput}
+        onKeyDown={addUser}
+      />
+      <AddUser className="icon-base" onClick={addUser} />
     </StyledInput>
   );
 }

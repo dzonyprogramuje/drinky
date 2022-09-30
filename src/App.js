@@ -30,6 +30,11 @@ const StyledApp = styled.div`
 
 function App() {
   const [level, setLevel] = useState(1);
+  const [players, setPlayers] = useState([
+    "Johny",
+    "Sex is the best",
+    "Gang Bang",
+  ]);
 
   return (
     <StyledApp>
@@ -39,7 +44,12 @@ function App() {
             <StartScreen />
           </Route>
           <Route path="/level" exact>
-            <LevelScreen level={level} setLevel={setLevel} />
+            <LevelScreen
+              level={level}
+              setLevel={setLevel}
+              players={players}
+              setPlayers={setPlayers}
+            />
           </Route>
           <Route path="/game" exact>
             <GameScreen />

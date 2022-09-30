@@ -12,10 +12,11 @@ export default function MainButtonComponent({ children, to, fully }) {
     justify-content: center;
     border-radius: 12px;
     font-size: var(--font-base);
+    transition: 0.2s all ease-out;
 
     background-color: ${fully ? `var(--color-base)` : `none`};
     border: ${fully ? `none` : `2px solid var(--color-base)`};
-
+    color: ${fully ? `var(--color-dark)` : `white`};
     & a {
       display: flex;
       height: 100%;
@@ -23,7 +24,7 @@ export default function MainButtonComponent({ children, to, fully }) {
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: ${fully ? `var(--color-dark)` : `white`};
+      color: inherit;
     }
 
     &:hover,
@@ -31,6 +32,7 @@ export default function MainButtonComponent({ children, to, fully }) {
       cursor: pointer;
       background-color: var(--color-base-hover);
       /* border: none; */
+      color: var(--color-dark);
     }
   `;
 

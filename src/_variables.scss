@@ -3,7 +3,7 @@
   --color-light: #25272e;
   --color-light-hover: #42434c;
   --color-base: #ebcf4e;
-  --color-base-hover: #edc411;
+  --color-base-hover: #fde57c;
   --color-white: white;
   --color-light-second: #b3b3b3;
 
@@ -28,6 +28,7 @@
 
   &:hover {
     fill: var(--color-base-hover);
+    cursor: pointer;
   }
 }
 

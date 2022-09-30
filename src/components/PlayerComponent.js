@@ -15,15 +15,14 @@ const StyledPlayer = styled.div`
 
   &:hover,
   &:active {
-    /* background-color: var(--color-light-hover); */
     border: 1px solid var(--color-base);
     margin: 0 -1px;
   }
 `;
 
-export default function PlayerComponent({ name }) {
+export default function PlayerComponent({ name, id }) {
   return (
-    <StyledPlayer>
+    <StyledPlayer name={name} id={id}>
       {name}
       <DeleteUser className="icon-base" />
     </StyledPlayer>
