@@ -56,7 +56,9 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
     // we have to prevent fire a setPlayers without name.value, when a div is clicked
     if (e.target.attributes.name.value) {
       setPlayers((prevState) =>
-        prevState.filter((player) => player !== e.target.attributes.name.value)
+        prevState.filter(
+          (player) => player.name !== e.target.attributes.name.value
+        )
       );
     }
   };
@@ -98,9 +100,9 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
           {players.length <= 0 ? (
             <p>Add players to the game!</p>
           ) : (
-            players.map((player, id) => (
+            players.map((player) => (
               // TODO: how to do this with for example custom attribute e.g. "ass"
-              <PlayerComponent name={player} id={id} />
+              <PlayerComponent name={player.name} id={player.id} />
             ))
           )}
         </div>

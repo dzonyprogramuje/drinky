@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import uniqid from "uniqid";
 
 import { AiOutlineUserAdd as AddUser } from "react-icons/ai";
 
@@ -38,8 +39,15 @@ export default function InputComponent({ placeholder, setPlayers }) {
 
   const addUser = (e) => {
     const { value } = nameInput.current;
+
+    const newUser = {};
+    newUser.id = uniqid();
+    newUser.name = value;
+    newUser.lifes = 5;
+    newUser.drunk = 0;
+
     if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
-      setPlayers((prevState) => [...prevState, value]);
+      setPlayers((prevState) => [...prevState, newUser]);
       nameInput.current.value = "";
     }
   };

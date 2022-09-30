@@ -30,11 +30,7 @@ const StyledApp = styled.div`
 
 function App() {
   const [level, setLevel] = useState(1);
-  const [players, setPlayers] = useState([
-    "Johny",
-    "Sex is the best",
-    "Gang Bang",
-  ]);
+  const [players, setPlayers] = useState([]);
 
   return (
     <StyledApp>
