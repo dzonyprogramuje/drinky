@@ -14,9 +14,11 @@ const StyledMenuBar = styled.div`
 `;
 
 export default function MenuBarComponent({ title }) {
+  const linkToBack = title === "Level" ? "/" : "/level";
+
   return (
     <StyledMenuBar>
-      <Link to="/">
+      <Link to={linkToBack}>
         <BackIcon className="icon-base icon-big" />
       </Link>
       <h2>{title}</h2>
