@@ -49,8 +49,12 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
         setTime((prevState) => prevState - 1);
         setOffset((prevState) => prevState - howMuchPXIsOneSecond);
       } else {
+        const newPlayers = players;
+        newPlayers[screen].lifes--;
+        setPlayers(newPlayers);
         if (screen + 1 < players.length) {
           setScreen((prevState) => prevState + 1);
+
           setTime(INIT_TIME);
           setOffset(fullyCircle);
         } else {
