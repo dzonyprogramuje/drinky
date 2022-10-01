@@ -23,6 +23,7 @@ const StyledStartScreen = styled.div`
     font-weight: 300;
   }
 
+  // TODO: adjust image that it works dynamic RWD
   img.alkohol {
     width: 65%;
     margin-left: -10%;
