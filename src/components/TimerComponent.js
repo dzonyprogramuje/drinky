@@ -12,58 +12,55 @@ const showTimeAsString = (time) => {
   return `${minutesToShow}:${secondsToShow}`;
 };
 
-export default function TimerComponent({ time, offset, fullyCircle }) {
-  // const circle = Math.PI * 150;
+const StyledTimerContainer = styled.div`
+  position: relative;
+  width: 320px;
+  height: 320px;
 
-  const StyledTimerContainer = styled.div`
+  // TODO: without overflow hidden does not work hover on buttons  :O Why?
+  overflow: hidden;
+
+  .circle-container {
+    rotate: -90deg;
     position: relative;
-    width: 320px;
-    height: 320px;
+  }
 
-    // TODO: without overflow hidden does not work hover on buttons  :O Why?
-    overflow: hidden;
+  circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-    .circle-container {
-      rotate: -90deg;
-      position: relative;
-    }
+  .inner {
+    stroke: var(--color-base);
+    stroke-width: 10px;
 
-    circle {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+    z-index: 1;
+  }
 
-    .inner {
-      stroke: var(--color-base);
-      stroke-width: 10px;
-      stroke-dasharray: ${fullyCircle};
-      stroke-dashoffset: ${offset};
-      z-index: 1;
-    }
+  .outer {
+    stroke: var(--color-light);
+    stroke-width: 10px;
+    stroke-dasharray: 950;
+    stroke-dashoffset: 0;
+    z-index: -100;
+  }
 
-    .outer {
-      stroke: var(--color-light);
-      stroke-width: 10px;
-      stroke-dasharray: 950;
-      stroke-dashoffset: 0;
-      z-index: -100;
-    }
+  circle {
+    fill: none;
+    /* animation: all 5s linear; */
+  }
 
-    circle {
-      fill: none;
-      /* animation: all 5s linear; */
-    }
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--font-big);
+  }
+`;
 
-    p {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: var(--font-big);
-    }
-  `;
-
+export default function TimerComponent({ time, offset, fullyCircle }) {
   return (
     <StyledTimerContainer>
       <div className="circle-container">
@@ -81,6 +78,8 @@ export default function TimerComponent({ time, offset, fullyCircle }) {
             cy="160"
             r="150"
             stroke-linecap="round"
+            stroke-dasharray={`${fullyCircle}`}
+            stroke-dashoffset={`${offset}`}
           />
         </svg>
       </div>
