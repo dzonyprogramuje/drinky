@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-export default function MainButtonComponent({ children, to, fully }) {
+export default function MainButtonComponent({ children, to, fully, onClick }) {
   const StyledMainButton = styled.div`
     height: 50px;
     width: 100%;
@@ -39,6 +39,7 @@ export default function MainButtonComponent({ children, to, fully }) {
   return (
     <StyledMainButton>
       <Link
+        onClick={onClick}
         to={to}
         style={{
           width: "100%",

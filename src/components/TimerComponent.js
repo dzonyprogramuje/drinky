@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function TimerComponent({ screen, setScreen, players }) {
-  const [time, setTime] = useState(5);
-  const [actuall, setActuall] = useState(950);
-  const howMuchPXIsOneSecond = actuall / time;
+// convert time to string to show
+const showTimeAsString = (time) => {
+  let minutes = Math.floor(time / 60);
+  let seconds = time % 60;
 
-  const setNewCircle = () => {
-    setActuall((prevState) => prevState - howMuchPXIsOneSecond);
-  };
+  let minutesToShow = minutes < 10 ? "0" + minutes : minutes;
+  let secondsToShow = time % 60 < 10 ? "0" + seconds : seconds;
 
-  const showTimeAsString = () => {
-    let minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+  return `${minutesToShow}:${secondsToShow}`;
+};
 
-    let minutesToShow = minutes < 10 ? "0" + minutes : minutes;
-    let secondsToShow = time % 60 < 10 ? "0" + seconds : seconds;
-
-    return `${minutesToShow}:${secondsToShow}`;
-  };
+export default function TimerComponent({ time, offset, fullyCircle }) {
+  // const circle = Math.PI * 150;
 
   const StyledTimerContainer = styled.div`
     position: relative;
@@ -42,8 +37,8 @@ export default function TimerComponent({ screen, setScreen, players }) {
     .inner {
       stroke: var(--color-base);
       stroke-width: 10px;
-      stroke-dasharray: 950;
-      stroke-dashoffset: calc(950 - ${actuall});
+      stroke-dasharray: ${fullyCircle};
+      stroke-dashoffset: ${offset};
       z-index: 1;
     }
 
@@ -69,24 +64,6 @@ export default function TimerComponent({ screen, setScreen, players }) {
     }
   `;
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (time > 0) {
-        setNewCircle();
-        setTime((prevState) => prevState - 1);
-      } else {
-        if (screen + 1 < players.length) {
-          setScreen((prevState) => prevState + 1);
-          setTime(5);
-        } else {
-          setScreen(0);
-          setTime(5);
-        }
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [time]);
-
   return (
     <StyledTimerContainer>
       <div className="circle-container">
@@ -107,7 +84,7 @@ export default function TimerComponent({ screen, setScreen, players }) {
           />
         </svg>
       </div>
-      <p>{showTimeAsString()}</p>
+      <p>{showTimeAsString(time)}</p>
     </StyledTimerContainer>
   );
 }

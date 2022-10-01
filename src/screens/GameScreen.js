@@ -37,17 +37,52 @@ const StyledGameScreen = styled.div`
   }
 `;
 export default function GameScreen({ screen, setScreen, players, setPlayers }) {
+  const fullyCircle = 941;
+  const INIT_TIME = 2;
+  const [time, setTime] = useState(INIT_TIME);
+  const [offset, setOffset] = useState(fullyCircle);
+  const howMuchPXIsOneSecond = parseFloat(fullyCircle / INIT_TIME);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (time > 0) {
+        setTime((prevState) => prevState - 1);
+        setOffset((prevState) => prevState - howMuchPXIsOneSecond);
+      } else {
+        if (screen + 1 < players.length) {
+          setScreen((prevState) => prevState + 1);
+          setTime(INIT_TIME);
+          setOffset(fullyCircle);
+        } else {
+          setScreen(0);
+          setTime(INIT_TIME);
+          setOffset(fullyCircle);
+        }
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [time]);
+
+  // TODO: create a helpers to prevent double state update
+  // TODO: add remove player when lifes = 0
+
   const handleClick = (value) => {
-    console.log("clicked");
+    const newPlayers = players;
     if (value) {
-      console.log("value true");
-      // setPlayers((prevState) => {
-      //   prevState[screen].drunk += 1;
-      // });
+      newPlayers[screen].drunk++;
+      setPlayers(newPlayers);
     } else {
-      // setPlayers((prevState) => {
-      //   prevState[screen].lifes -= 1;
-      // });
+      newPlayers[screen].lifes--;
+      setPlayers(newPlayers);
+    }
+    if (screen + 1 < players.length) {
+      setScreen((prevState) => prevState + 1);
+      setTime(INIT_TIME);
+      setOffset(fullyCircle);
+    } else {
+      setScreen(0);
+      setTime(INIT_TIME);
+      setOffset(fullyCircle);
     }
   };
 
@@ -64,7 +99,7 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
           icon={<FaGlassWhiskey className="icon-base icon-small" />}
         />
       </div>
-      <TimerComponent screen={screen} setScreen={setScreen} players={players} />
+      <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />
       <p className="game-screen-todo">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
       </p>
