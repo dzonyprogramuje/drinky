@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import StartScreen from "./screens/StartScreen";
 import LevelScreen from "./screens/LevelScreen";
 import GameScreen from "./screens/GameScreen";
+import GameOverScreen from "./screens/GameOverScreen";
 
 const StyledApp = styled.div`
   background-color: var(--color-dark);
@@ -55,6 +56,9 @@ function App() {
               players={players}
               setPlayers={setPlayers}
             />
+            <Route path="/over" exact>
+              <GameOverScreen />
+            </Route>
           </Route>
           {/* <Route path="/over">
             <OverScreen />

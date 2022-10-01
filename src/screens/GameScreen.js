@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import MenuBarComponent from "../components/MenuBarComponent";
@@ -37,6 +38,7 @@ const StyledGameScreen = styled.div`
   }
 `;
 export default function GameScreen({ screen, setScreen, players, setPlayers }) {
+  const history = useHistory();
   const fullyCircle = 941;
   const INIT_TIME = 2;
   const [time, setTime] = useState(INIT_TIME);
@@ -46,39 +48,51 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (time > 0) {
-        setTime((prevState) => prevState - 1);
-        setOffset((prevState) => prevState - howMuchPXIsOneSecond);
+        handleTick();
       } else {
-        const newPlayers = players;
-        newPlayers[screen].lifes--;
-        setPlayers(newPlayers);
-        if (screen + 1 < players.length) {
-          setScreen((prevState) => prevState + 1);
-
-          setTime(INIT_TIME);
-          setOffset(fullyCircle);
-        } else {
-          setScreen(0);
-          setTime(INIT_TIME);
-          setOffset(fullyCircle);
-        }
+        updatePlayer(false);
+        updateScreen();
       }
     }, 1000);
     return () => clearTimeout(timer);
   }, [time]);
 
-  // TODO: create a helpers to prevent double state update
-  // TODO: add remove player when lifes = 0
+  const handleClick = (hasDrunk) => {
+    updatePlayer(hasDrunk);
+    updateScreen();
+  };
 
-  const handleClick = (value) => {
+  const updatePlayer = (hasDrunk) => {
     const newPlayers = players;
-    if (value) {
+
+    if (hasDrunk) {
       newPlayers[screen].drunk++;
-      setPlayers(newPlayers);
     } else {
       newPlayers[screen].lifes--;
-      setPlayers(newPlayers);
     }
+
+    // delete player from array if it is over
+    if (newPlayers[screen].lifes <= 0) {
+      newPlayers.splice(screen, 1);
+    }
+
+    setPlayers(newPlayers);
+    isGameOver();
+  };
+
+  // handle Time and set new offset for circle
+  const handleTick = () => {
+    setTime((prevState) => prevState - 1);
+    setOffset((prevState) => prevState - howMuchPXIsOneSecond);
+  };
+  const isGameOver = () => {
+    if (players.length <= 0) {
+      history.push("/over");
+    }
+  };
+
+  // after click or timeout we want to update screen
+  const updateScreen = () => {
     if (screen + 1 < players.length) {
       setScreen((prevState) => prevState + 1);
       setTime(INIT_TIME);
