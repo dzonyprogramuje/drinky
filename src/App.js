@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import StartScreen from "./screens/StartScreen";
 import LevelScreen from "./screens/LevelScreen";
@@ -33,11 +33,52 @@ function App() {
   const [level, setLevel] = useState(1);
   const [players, setPlayers] = useState([]);
   const [gameScreen, setGameScreen] = useState(0);
+  const tasks = [
+    "Pijesz kieliszek",
+    "Pijesz lufke",
+    "Omijasz kolejke",
+    "Pijesz pół",
+    "Tym razem Ci się udało",
+    "Pijesz pół kielonka",
+    "Pijesz pół lufki",
+    "Masz szczęście",
+    "Pijesz trzy strzały",
+    "Pijesz dwie lufy",
+    "Farciarz z Ciebie",
+    "Pijesz dwa kieliszki",
+    "Tym razem nie pijesz",
+  ];
 
   return (
     <StyledApp>
       <Router>
         <Switch>
+          {/* <Route path="/" exact element={<StartScreen />} /> */}
+          {/* <Route
+            path="/level"
+            exact
+            element={
+              <LevelScreen
+                level={level}
+                setLevel={setLevel}
+                players={players}
+                setPlayers={setPlayers}
+              />
+            }
+          />
+          <Route
+            path="/game"
+            exact
+            element={
+              <GameScreen
+                screen={gameScreen}
+                setScreen={setGameScreen}
+                players={players}
+                setPlayers={setPlayers}
+                tasks={tasks}
+              />
+            }
+          /> */}
           <Route path="/" exact>
             <StartScreen />
           </Route>
@@ -55,14 +96,13 @@ function App() {
               setScreen={setGameScreen}
               players={players}
               setPlayers={setPlayers}
+              tasks={tasks}
             />
-            <Route path="/over" exact>
-              <GameOverScreen />
-            </Route>
           </Route>
-          {/* <Route path="/over">
-            <OverScreen />
-          </Route> */}
+
+          <Route path="/over" exact>
+            <GameOverScreen />
+          </Route>
         </Switch>
       </Router>
     </StyledApp>

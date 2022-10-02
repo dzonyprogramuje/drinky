@@ -37,12 +37,27 @@ const StyledGameScreen = styled.div`
     font-size: 1rem;
   }
 `;
-export default function GameScreen({ screen, setScreen, players, setPlayers }) {
+
+export default function GameScreen({
+  screen,
+  setScreen,
+  players,
+  setPlayers,
+  tasks,
+}) {
   const history = useHistory();
+  const randomTask = () => {
+    const randomNumber = Math.floor(Math.random() * (tasks.length - 0) + 0);
+    const randomTask = tasks[randomNumber];
+
+    return randomTask;
+  };
+
   const fullyCircle = 941;
   const INIT_TIME = 2;
   const [time, setTime] = useState(INIT_TIME);
   const [offset, setOffset] = useState(fullyCircle);
+  const [task, setTask] = useState(randomTask());
   const howMuchPXIsOneSecond = parseFloat(fullyCircle / INIT_TIME);
 
   useEffect(() => {
@@ -63,6 +78,7 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
   };
 
   const updatePlayer = (hasDrunk) => {
+    // why does it work and this not [...players] ?
     const newPlayers = players;
 
     if (hasDrunk) {
@@ -85,6 +101,7 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
     setTime((prevState) => prevState - 1);
     setOffset((prevState) => prevState - howMuchPXIsOneSecond);
   };
+
   const isGameOver = () => {
     if (players.length <= 0) {
       history.push("/over");
@@ -102,6 +119,7 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
       setTime(INIT_TIME);
       setOffset(fullyCircle);
     }
+    setTask(randomTask());
   };
 
   return (
@@ -118,9 +136,7 @@ export default function GameScreen({ screen, setScreen, players, setPlayers }) {
         />
       </div>
       <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />
-      <p className="game-screen-todo">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-      </p>
+      <p className="game-screen-todo">{task}</p>
       <div className="game-screen-buttons">
         <MainButtonComponent onClick={() => handleClick(false)}>
           Nie piję
