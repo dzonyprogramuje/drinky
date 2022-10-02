@@ -104,7 +104,7 @@ function App() {
           </Route>
 
           <Route path="/over" exact>
-            <GameOverScreen />
+            <GameOverScreen players={players} />
           </Route>
         </Switch>
       </Router>
