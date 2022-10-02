@@ -22,7 +22,7 @@ const StyledPlayer = styled.div`
 
 export default function PlayerComponent({ name, id }) {
   return (
-    <StyledPlayer name={name} id={id}>
+    <StyledPlayer name={name} id={id} key={id}>
       {name}
       <DeleteUser className="icon-base" />
     </StyledPlayer>

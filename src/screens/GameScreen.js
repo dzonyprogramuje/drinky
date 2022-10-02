@@ -62,21 +62,10 @@ export default function GameScreen({
   const [task, setTask] = useState(randomTask());
   const howMuchPXIsOneSecond = parseFloat(fullyCircle / INIT_TIME);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (time > 0) {
-        handleTick();
-      } else {
-        updatePlayer(false);
-        updateScreen();
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [time, handleTick, updatePlayer, updateScreen]);
-
-  const handleClick = (hasDrunk) => {
-    updatePlayer(hasDrunk);
-    updateScreen();
+  // handle Time and set new offset for circle
+  const handleTick = () => {
+    setTime((prevState) => prevState - 1);
+    setOffset((prevState) => prevState - howMuchPXIsOneSecond);
   };
 
   const updatePlayer = (hasDrunk) => {
@@ -98,18 +87,6 @@ export default function GameScreen({
     isGameOver();
   };
 
-  // handle Time and set new offset for circle
-  const handleTick = () => {
-    setTime((prevState) => prevState - 1);
-    setOffset((prevState) => prevState - howMuchPXIsOneSecond);
-  };
-
-  const isGameOver = () => {
-    if (players.length <= 0) {
-      history.push("/over");
-    }
-  };
-
   // after click or timeout we want to update screen
   const updateScreen = () => {
     if (screen + 1 < players.length) {
@@ -122,6 +99,29 @@ export default function GameScreen({
       setOffset(fullyCircle);
     }
     setTask(randomTask());
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (time > 0) {
+        handleTick();
+      } else {
+        updatePlayer(false);
+        updateScreen();
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [time, handleTick, updatePlayer, updateScreen]);
+
+  const handleClick = (hasDrunk) => {
+    updatePlayer(hasDrunk);
+    updateScreen();
+  };
+
+  const isGameOver = () => {
+    if (players.length <= 0) {
+      history.push("/over");
+    }
   };
 
   return (

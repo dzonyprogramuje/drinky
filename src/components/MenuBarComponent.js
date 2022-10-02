@@ -22,7 +22,7 @@ export default function MenuBarComponent({ title }) {
         <BackIcon className="icon-base icon-big" />
       </Link>
       <h2>{title}</h2>
-      <Link>
+      <Link to="">
         <MenuIcon className="icon-base icon-big" />
       </Link>
     </StyledMenuBar>

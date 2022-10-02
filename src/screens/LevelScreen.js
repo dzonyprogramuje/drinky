@@ -102,7 +102,11 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
           ) : (
             players.map((player) => (
               // TODO: how to do this with for example custom attribute e.g. "ass"
-              <PlayerComponent name={player.name} id={player.id} />
+              <PlayerComponent
+                name={player.name}
+                key={player.id}
+                id={player.id}
+              />
             ))
           )}
         </div>
