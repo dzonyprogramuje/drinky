@@ -79,18 +79,18 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
         >
           <TagComponent
             title="Easy"
+            value={0}
+            active={level == 0 ? true : false}
+          />
+          <TagComponent
+            title="Middle"
             value={1}
             active={level == 1 ? true : false}
           />
           <TagComponent
-            title="Middle"
+            title="Hard"
             value={2}
             active={level == 2 ? true : false}
-          />
-          <TagComponent
-            title="Hard"
-            value={3}
-            active={level == 3 ? true : false}
           />
         </div>
       </div>

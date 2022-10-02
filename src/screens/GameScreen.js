@@ -44,6 +44,8 @@ export default function GameScreen({
   players,
   setPlayers,
   tasks,
+  levelTimes,
+  level,
 }) {
   const history = useHistory();
   const randomTask = () => {
@@ -54,7 +56,7 @@ export default function GameScreen({
   };
 
   const fullyCircle = 941;
-  const INIT_TIME = 2;
+  const INIT_TIME = levelTimes[level];
   const [time, setTime] = useState(INIT_TIME);
   const [offset, setOffset] = useState(fullyCircle);
   const [task, setTask] = useState(randomTask());
