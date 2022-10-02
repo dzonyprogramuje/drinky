@@ -72,7 +72,7 @@ export default function GameScreen({
       }
     }, 1000);
     return () => clearTimeout(timer);
-  }, [time]);
+  }, [time, handleTick, updatePlayer, updateScreen]);
 
   const handleClick = (hasDrunk) => {
     updatePlayer(hasDrunk);
