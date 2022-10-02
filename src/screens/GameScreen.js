@@ -80,7 +80,8 @@ export default function GameScreen({
 
     // delete player from array if it is over
     if (newPlayers[screen].lifes <= 0) {
-      newPlayers.splice(screen, 1);
+      newPlayers[screen].isOver = true;
+      // newPlayers.splice(screen, 1);
     }
 
     setPlayers(newPlayers);
@@ -119,7 +120,9 @@ export default function GameScreen({
   };
 
   const isGameOver = () => {
-    if (players.length <= 0) {
+    const isSomebodyNotOver = players.filter((player) => !player.isOver);
+
+    if (isSomebodyNotOver.length <= 0) {
       history.push("/over");
     }
   };
