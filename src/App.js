@@ -49,6 +49,7 @@ function App() {
     "Pijesz dwa kieliszki",
     "Tym razem nie pijesz",
   ];
+  const [score, setScore] = useState([]);
 
   return (
     <StyledApp>
@@ -100,11 +101,13 @@ function App() {
               tasks={tasks}
               levelTimes={levelTimes}
               level={level}
+              score={score}
+              setScore={setScore}
             />
           </Route>
 
           <Route path="/over" exact>
-            <GameOverScreen players={players} />
+            <GameOverScreen players={score} />
           </Route>
         </Switch>
       </Router>

@@ -45,7 +45,6 @@ export default function InputComponent({ placeholder, setPlayers }) {
     newUser.name = value;
     newUser.lifes = 5;
     newUser.drunk = 0;
-    newUser.isOver = false;
 
     if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
       setPlayers((prevState) => [...prevState, newUser]);

@@ -46,8 +46,13 @@ export default function GameScreen({
   tasks,
   levelTimes,
   level,
+  score,
+  setScore,
 }) {
   const history = useHistory();
+
+  setPlayers(players);
+
   const randomTask = () => {
     const randomNumber = Math.floor(Math.random() * (tasks.length - 0) + 0);
     const randomTask = tasks[randomNumber];
@@ -79,9 +84,10 @@ export default function GameScreen({
     }
 
     // delete player from array if it is over
-    if (newPlayers[screen].lifes <= 0) {
-      newPlayers[screen].isOver = true;
-      // newPlayers.splice(screen, 1);
+    if (newPlayers[screen].lifes === 0) {
+      setScore((prevState) => [...prevState, newPlayers[screen]]);
+
+      newPlayers.splice(screen, 1);
     }
 
     setPlayers(newPlayers);
@@ -90,16 +96,14 @@ export default function GameScreen({
 
   // after click or timeout we want to update screen
   const updateScreen = () => {
+    setTime(INIT_TIME);
+    setOffset(fullyCircle);
+    setTask(randomTask());
     if (screen + 1 < players.length) {
       setScreen((prevState) => prevState + 1);
-      setTime(INIT_TIME);
-      setOffset(fullyCircle);
     } else {
       setScreen(0);
-      setTime(INIT_TIME);
-      setOffset(fullyCircle);
     }
-    setTask(randomTask());
   };
 
   useEffect(() => {
@@ -120,9 +124,7 @@ export default function GameScreen({
   };
 
   const isGameOver = () => {
-    const isSomebodyNotOver = players.filter((player) => !player.isOver);
-
-    if (isSomebodyNotOver.length <= 0) {
+    if (players.length <= 0) {
       history.push("/over");
     }
   };
