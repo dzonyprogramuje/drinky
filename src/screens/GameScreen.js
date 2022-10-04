@@ -34,7 +34,15 @@ const StyledGameScreen = styled.div`
   }
 
   .game-screen-todo {
-    font-size: 1rem;
+    font-size: 1.09rem;
+    font-weight: 500;
+    background-color: var(--color-light);
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -46,7 +54,6 @@ export default function GameScreen({
   tasks,
   levelTimes,
   level,
-  score,
   setScore,
 }) {
   const history = useHistory();
