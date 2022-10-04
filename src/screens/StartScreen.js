@@ -1,17 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+
 import MainButtonComponent from "../components/MainButtonComponent";
 import AlkoholImage from "../images/alkohol.svg";
 
 const StyledStartScreen = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 10%;
-
   h1 {
     color: var(--color-white);
     font-size: var(--font-huge);
@@ -40,20 +35,22 @@ const StyledStartScreen = styled.div`
 `;
 export default function StartScreen() {
   return (
-    <StyledStartScreen>
-      <img
-        src={AlkoholImage}
-        alt="Drinky - Pijacka Gra Alkoholowa - Start Screen"
-        className="alkohol"
-      />
-      <div className="start-screen-text-container">
-        <h1>Drinky</h1>
-        <h2>Pijacka gra alkoholowa</h2>
+    <motion.div initial={{ x: "100%" }} animate={{ x: "0" }}>
+      <StyledStartScreen>
+        <img
+          src={AlkoholImage}
+          alt="Drinky - Pijacka Gra Alkoholowa - Start Screen"
+          className="alkohol"
+        />
+        <div className="start-screen-text-container">
+          <h1>Drinky</h1>
+          <h2>Pijacka gra alkoholowa</h2>
 
-        <MainButtonComponent fully to="/level">
-          Start
-        </MainButtonComponent>
-      </div>
-    </StyledStartScreen>
+          <MainButtonComponent fully to="/level">
+            Start
+          </MainButtonComponent>
+        </div>
+      </StyledStartScreen>
+    </motion.div>
   );
 }

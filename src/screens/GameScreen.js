@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import MenuBarComponent from "../components/MenuBarComponent";
 import TimerComponent from "../components/TimerComponent";
@@ -137,28 +138,34 @@ export default function GameScreen({
   };
 
   return (
-    <StyledGameScreen>
-      <MenuBarComponent title={players[screen].name} />
-      <div className="action-item-container">
-        <ActionItemComponent
-          text={players[screen].lifes}
-          icon={<FaHeart className="icon-base icon-small" />}
-        />
-        <ActionItemComponent
-          text={players[screen].drunk}
-          icon={<FaGlassWhiskey className="icon-base icon-small" />}
-        />
-      </div>
-      <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />
-      <p className="game-screen-todo">{task}</p>
-      <div className="game-screen-buttons">
-        <MainButtonComponent onClick={() => handleClick(false)}>
-          Nie piję
-        </MainButtonComponent>
-        <MainButtonComponent fully onClick={() => handleClick(true)}>
-          Piję
-        </MainButtonComponent>
-      </div>
-    </StyledGameScreen>
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: "0" }}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <StyledGameScreen>
+        <MenuBarComponent title={players[screen].name} />
+        <div className="action-item-container">
+          <ActionItemComponent
+            text={players[screen].lifes}
+            icon={<FaHeart className="icon-base icon-small" />}
+          />
+          <ActionItemComponent
+            text={players[screen].drunk}
+            icon={<FaGlassWhiskey className="icon-base icon-small" />}
+          />
+        </div>
+        <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />
+        <p className="game-screen-todo">{task}</p>
+        <div className="game-screen-buttons">
+          <MainButtonComponent onClick={() => handleClick(false)}>
+            Nie piję
+          </MainButtonComponent>
+          <MainButtonComponent fully onClick={() => handleClick(true)}>
+            Piję
+          </MainButtonComponent>
+        </div>
+      </StyledGameScreen>
+    </motion.div>
   );
 }

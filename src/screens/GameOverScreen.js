@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+
 import MenuBarComponent from "../components/MenuBarComponent";
 import PlayerComponent from "../components/PlayerComponent";
 
@@ -30,14 +32,24 @@ const StyledGameScreen = styled.div`
 
 export default function GameOverScreen({ players }) {
   return (
-    <StyledGameScreen>
-      <MenuBarComponent title="Game Over" />
-      <div className="game-over-screen-players">
-        {players.map((player) => (
-          <PlayerComponent name={player.name} key={player.id} id={player.id} />
-        ))}
-      </div>
-      <div></div>
-    </StyledGameScreen>
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: "0" }}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <StyledGameScreen>
+        <MenuBarComponent title="Game Over" />
+        <div className="game-over-screen-players">
+          {players.map((player) => (
+            <PlayerComponent
+              name={player.name}
+              key={player.id}
+              id={player.id}
+            />
+          ))}
+        </div>
+        <div></div>
+      </StyledGameScreen>
+    </motion.div>
   );
 }

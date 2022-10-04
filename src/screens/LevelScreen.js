@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+
 import MenuBarComponent from "../components/MenuBarComponent";
 import TagComponent from "../components/TagComponent";
 import InputComponent from "../components/InputComponent";
@@ -63,62 +65,68 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
     }
   };
   return (
-    <StyledLevelScreen>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-        }}
-      >
-        <MenuBarComponent title="Level" />
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: "0" }}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <StyledLevelScreen>
         <div
-          className="level-screen-tag-container"
-          onClick={(e) => setLevel(e.target.attributes.value.value)}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+          }}
         >
-          <TagComponent
-            title="Easy"
-            value={0}
-            active={level === "0" ? true : false}
-          />
-          <TagComponent
-            title="Middle"
-            value={1}
-            active={level === "1" ? true : false}
-          />
-          <TagComponent
-            title="Hard"
-            value={2}
-            active={level === "2" ? true : false}
-          />
+          <MenuBarComponent title="Level" />
+          <div
+            className="level-screen-tag-container"
+            onClick={(e) => setLevel(e.target.attributes.value.value)}
+          >
+            <TagComponent
+              title="Easy"
+              value={0}
+              active={level === "0" ? true : false}
+            />
+            <TagComponent
+              title="Middle"
+              value={1}
+              active={level === "1" ? true : false}
+            />
+            <TagComponent
+              title="Hard"
+              value={2}
+              active={level === "2" ? true : false}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="level-screen-players">
-        <div className="players-add" onClick={handleDelete}>
-          {players.length <= 0 ? (
-            <p>Add players to the game!</p>
-          ) : (
-            players.map((player) => (
-              // TODO: how to do this with for example custom attribute e.g. "ass"
-              <PlayerComponent
-                name={player.name}
-                key={player.id}
-                id={player.id}
-              />
-            ))
-          )}
+        <div className="level-screen-players">
+          <div className="players-add" onClick={handleDelete}>
+            {players.length <= 0 ? (
+              <p>Add players to the game!</p>
+            ) : (
+              players.map((player) => (
+                // TODO: how to do this with for example custom attribute e.g. "ass"
+                <PlayerComponent
+                  name={player.name}
+                  key={player.id}
+                  id={player.id}
+                />
+              ))
+            )}
+          </div>
         </div>
-      </div>
-      <div className="level-screen-bottom-container">
-        {players.length > 1 ? (
-          <MainButtonComponent fully to="/game">
-            Play!
-          </MainButtonComponent>
-        ) : null}
-        <InputComponent placeholder="Player name" setPlayers={setPlayers} />
-      </div>
-    </StyledLevelScreen>
+        <div className="level-screen-bottom-container">
+          {players.length > 1 ? (
+            <MainButtonComponent fully to="/game">
+              Play!
+            </MainButtonComponent>
+          ) : null}
+          <InputComponent placeholder="Player name" setPlayers={setPlayers} />
+        </div>
+      </StyledLevelScreen>
+    </motion.div>
   );
 }
