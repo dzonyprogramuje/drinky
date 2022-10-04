@@ -10,7 +10,7 @@ const StyledInput = styled.div`
   align-items: center;
   border: 1px solid var(--color-base);
   border-radius: 12px;
-  height: 50px;
+  height: 52px;
   width: 100%;
   padding: 0 1rem;
   font-size: var(--font-small);
