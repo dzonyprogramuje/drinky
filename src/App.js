@@ -31,7 +31,7 @@ const StyledApp = styled.div`
 
 function App() {
   const levelTimes = [60, 180, 360];
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState("0");
   const [players, setPlayers] = useState([]);
   const [gameScreen, setGameScreen] = useState(0);
   const tasks = [
