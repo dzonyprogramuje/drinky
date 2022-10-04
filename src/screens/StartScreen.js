@@ -7,6 +7,13 @@ import MainButtonComponent from "../components/MainButtonComponent";
 import AlkoholImage from "../images/alkohol.svg";
 
 const StyledStartScreen = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: auto; */
+
   h1 {
     color: var(--color-white);
     font-size: var(--font-huge);
@@ -20,8 +27,8 @@ const StyledStartScreen = styled.div`
 
   // TODO: adjust image that it works dynamic RWD
   img.alkohol {
+    margin: 0 auto 0 10%;
     width: 65%;
-    margin-left: -10%;
   }
 
   .start-screen-text-container {
@@ -35,7 +42,15 @@ const StyledStartScreen = styled.div`
 `;
 export default function StartScreen() {
   return (
-    <motion.div initial={{ x: "100%" }} animate={{ x: "0" }}>
+    <motion.div
+      initial={{ x: "20%", opacity: 0 }}
+      animate={{ x: "0", opacity: 1 }}
+      style={{ width: "100%" }}
+      transition={{
+        opacity: { duration: 1 },
+        x: { type: "spring", stiffness: 100, ease: "easeInOut" },
+      }}
+    >
       <StyledStartScreen>
         <img
           src={AlkoholImage}

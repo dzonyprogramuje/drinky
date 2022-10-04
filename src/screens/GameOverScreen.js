@@ -33,9 +33,13 @@ const StyledGameScreen = styled.div`
 export default function GameOverScreen({ players }) {
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: "0" }}
+      initial={{ x: "20%", opacity: 0 }}
+      animate={{ x: "0", opacity: 1 }}
       style={{ width: "100%", height: "100%" }}
+      transition={{
+        opacity: { duration: 1 },
+        x: { type: "spring", stiffness: 100, ease: "easeInOut" },
+      }}
     >
       <StyledGameScreen>
         <MenuBarComponent title="Game Over" />

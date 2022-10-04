@@ -56,23 +56,25 @@ export default function GameScreen({
   levelTimes,
   level,
   setScore,
+  luckyArray,
 }) {
   const history = useHistory();
 
   setPlayers(players);
 
-  const randomTask = () => {
+  const randomNumber = () => {
     const randomNumber = Math.floor(Math.random() * (tasks.length - 0) + 0);
-    const randomTask = tasks[randomNumber];
+    return randomNumber;
+    // const randomTask = tasks[randomNumber];
 
-    return randomTask;
+    // return randomTask;
   };
 
   const fullyCircle = 941;
   const INIT_TIME = levelTimes[level];
   const [time, setTime] = useState(INIT_TIME);
   const [offset, setOffset] = useState(fullyCircle);
-  const [task, setTask] = useState(randomTask());
+  const [random, setRandom] = useState(randomNumber());
   const howMuchPXIsOneSecond = parseFloat(fullyCircle / INIT_TIME);
 
   // handle Time and set new offset for circle
@@ -81,13 +83,13 @@ export default function GameScreen({
     setOffset((prevState) => prevState - howMuchPXIsOneSecond);
   };
 
-  const updatePlayer = (hasDrunk) => {
+  const updatePlayer = (value) => {
     // why does it work and this not [...players] ?
     const newPlayers = players;
 
-    if (hasDrunk) {
+    if (value === 1) {
       newPlayers[screen].drunk++;
-    } else {
+    } else if (value === -1) {
       newPlayers[screen].lifes--;
     }
 
@@ -106,7 +108,7 @@ export default function GameScreen({
   const updateScreen = () => {
     setTime(INIT_TIME);
     setOffset(fullyCircle);
-    setTask(randomTask());
+    setRandom(randomNumber());
     if (screen + 1 < players.length) {
       setScreen((prevState) => prevState + 1);
     } else {
@@ -126,8 +128,8 @@ export default function GameScreen({
     return () => clearTimeout(timer);
   }, [time, handleTick, updatePlayer, updateScreen]);
 
-  const handleClick = (hasDrunk) => {
-    updatePlayer(hasDrunk);
+  const handleClick = (value) => {
+    updatePlayer(value);
     updateScreen();
   };
 
@@ -139,9 +141,13 @@ export default function GameScreen({
 
   return (
     <motion.div
-      initial={{ x: "100%" }}
-      animate={{ x: "0" }}
+      initial={{ x: "20%", opacity: 0 }}
+      animate={{ x: "0", opacity: 1 }}
       style={{ width: "100%", height: "100%" }}
+      transition={{
+        opacity: { duration: 1 },
+        x: { type: "spring", stiffness: 100, ease: "easeInOut" },
+      }}
     >
       <StyledGameScreen>
         <MenuBarComponent title={players[screen].name} />
@@ -156,14 +162,22 @@ export default function GameScreen({
           />
         </div>
         <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />
-        <p className="game-screen-todo">{task}</p>
+        <p className="game-screen-todo">{tasks[random]}</p>
         <div className="game-screen-buttons">
-          <MainButtonComponent onClick={() => handleClick(false)}>
-            Nie piję
-          </MainButtonComponent>
-          <MainButtonComponent fully onClick={() => handleClick(true)}>
-            Piję
-          </MainButtonComponent>
+          {luckyArray.includes(random) ? (
+            <MainButtonComponent fully onClick={() => handleClick(0)}>
+              OK
+            </MainButtonComponent>
+          ) : (
+            <>
+              <MainButtonComponent onClick={() => handleClick(-1)}>
+                Nie piję
+              </MainButtonComponent>
+              <MainButtonComponent fully onClick={() => handleClick(1)}>
+                Piję
+              </MainButtonComponent>
+            </>
+          )}
         </div>
       </StyledGameScreen>
     </motion.div>

@@ -34,6 +34,7 @@ const StyledApp = styled.div`
 
 export default function AnimatedRoutes() {
   const location = useLocation();
+  const luckyArray = [2, 4, 7, 10, 12];
   const levelTimes = [60, 180, 360];
   const [level, setLevel] = useState("0");
   const [players, setPlayers] = useState([]);
@@ -41,17 +42,17 @@ export default function AnimatedRoutes() {
   const tasks = [
     "Pijesz kieliszek",
     "Pijesz lufke",
-    "Omijasz kolejke",
+    "Omijasz kolejke", // 2
     "Pijesz pół",
-    "Tym razem Ci się udało",
+    "Tym razem Ci się udało", //4
     "Pijesz pół kielonka",
     "Pijesz pół lufki",
-    "Masz szczęście",
+    "Masz szczęście", //7
     "Pijesz trzy strzały",
     "Pijesz dwie lufy",
-    "Farciarz z Ciebie",
+    "Farciarz z Ciebie", //10
     "Pijesz dwa kieliszki",
-    "Tym razem nie pijesz",
+    "Tym razem nie pijesz", // 12
   ];
   const [score, setScore] = useState([]);
 
@@ -81,6 +82,7 @@ export default function AnimatedRoutes() {
               level={level}
               score={score}
               setScore={setScore}
+              luckyArray={luckyArray}
             />
           </Route>
 

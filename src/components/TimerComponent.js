@@ -19,6 +19,9 @@ const StyledTimerContainer = styled.div`
   // TODO: without overflow hidden does not work hover on buttons  :O Why?
   overflow: hidden;
 
+  animation: animation-slide-up, animation-opacity,
+    animation-scale 0.65s ease-in-out;
+
   .circle-container {
     rotate: -90deg;
     position: relative;
