@@ -2,12 +2,10 @@
 
 Pijacka gra alkoholowa [PL]
 
+![Sidebar Menu React Dzonyprogramuje](https://github.com/dzonyprogramuje/drinky/blob/main/cover.png?raw=true)
+
 ## Project not finished
 
-It is a project of a small mobile game in the browser version. Without Responsive web design, destiny: mobile phones only.
+It is a project of a small mobile game in the browser version. Without Responsive web design.
 
-### TODO:
-
-- change scss to styled components
-- when design is done, start with logic
-- in the future add some backend? Maybe statistic?
+Destiny: mobile phones only.
