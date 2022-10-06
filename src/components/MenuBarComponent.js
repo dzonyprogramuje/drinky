@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { IoMdArrowRoundBack as BackIcon } from "react-icons/io";
-import { AiOutlineMenu as MenuIcon } from "react-icons/ai";
+
+import { AiFillHome as HomeIcon } from "react-icons/ai";
 
 const StyledMenuBar = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const StyledMenuBar = styled.div`
 `;
 
 export default function MenuBarComponent({ title }) {
-  const linkToBack = title === "Level" ? "/" : "/level";
+  const linkToBack = title === "Poziom" ? "/" : "/level";
 
   return (
     <StyledMenuBar>
@@ -23,7 +24,7 @@ export default function MenuBarComponent({ title }) {
       </Link>
       <h2>{title}</h2>
       <Link to="">
-        <MenuIcon className="icon-base icon-big" />
+        <HomeIcon className="icon-base icon-big" />
       </Link>
     </StyledMenuBar>
   );

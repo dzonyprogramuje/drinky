@@ -9,7 +9,7 @@ import MainButtonComponent from "../components/MainButtonComponent";
 import ActionItemComponent from "../components/ActionItemComponent";
 
 import { FaHeart } from "react-icons/fa";
-import { FaGlassWhiskey } from "react-icons/fa";
+import { FaGlassWhiskey as DrunkIcon } from "react-icons/fa";
 
 const StyledGameScreen = styled.div`
   display: flex;
@@ -17,6 +17,8 @@ const StyledGameScreen = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 700px;
+  margin: auto;
   height: 100%;
   color: white;
   gap: var(--gap-big);
@@ -158,7 +160,7 @@ export default function GameScreen({
           />
           <ActionItemComponent
             text={players[screen].drunk}
-            icon={<FaGlassWhiskey className="icon-base icon-small" />}
+            icon={<DrunkIcon className="icon-base icon-small" />}
           />
         </div>
         <TimerComponent time={time} offset={offset} fullyCircle={fullyCircle} />

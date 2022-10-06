@@ -15,6 +15,8 @@ const StyledLevelScreen = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 700px;
+  margin: auto;
   height: 100%;
   color: white;
 
@@ -27,6 +29,7 @@ const StyledLevelScreen = styled.div`
   .level-screen-players {
     display: flex;
     width: 100%;
+
     .players-add {
       display: flex;
       flex-direction: column;
@@ -34,6 +37,7 @@ const StyledLevelScreen = styled.div`
       align-items: center;
       justify-content: center;
       width: 100%;
+
       color: var(--color-light-second);
 
       &:hover {
@@ -53,7 +57,13 @@ const StyledLevelScreen = styled.div`
   }
 `;
 
-export default function LevelScreen({ level, setLevel, players, setPlayers }) {
+export default function LevelScreen({
+  level,
+  setLevel,
+  players,
+  setPlayers,
+  setScore,
+}) {
   const handleDelete = (e) => {
     // we have to prevent fire a setPlayers without name.value, when a div is clicked
     if (e.target.attributes.name.value) {
@@ -83,23 +93,23 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
             gap: "2rem",
           }}
         >
-          <MenuBarComponent title="Level" />
+          <MenuBarComponent title="Poziom" />
           <div
             className="level-screen-tag-container"
             onClick={(e) => setLevel(e.target.attributes.value.value)}
           >
             <TagComponent
-              title="Easy"
+              title="Łatwy"
               value={0}
               active={level === "0" ? true : false}
             />
             <TagComponent
-              title="Middle"
+              title="Średni"
               value={1}
               active={level === "1" ? true : false}
             />
             <TagComponent
-              title="Hard"
+              title="Trudny"
               value={2}
               active={level === "2" ? true : false}
             />
@@ -109,7 +119,7 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
         <div className="level-screen-players">
           <div className="players-add" onClick={handleDelete}>
             {players.length <= 0 ? (
-              <p>Add players to the game!</p>
+              <p>Dodaj graczy!</p>
             ) : (
               players.map((player) => (
                 // TODO: how to do this with for example custom attribute e.g. "ass"
@@ -124,11 +134,11 @@ export default function LevelScreen({ level, setLevel, players, setPlayers }) {
         </div>
         <div className="level-screen-bottom-container">
           {players.length > 1 ? (
-            <MainButtonComponent fully to="/game">
+            <MainButtonComponent fully to="/game" onClick={() => setScore([])}>
               Play!
             </MainButtonComponent>
           ) : null}
-          <InputComponent placeholder="Player name" setPlayers={setPlayers} />
+          <InputComponent placeholder="Nick gracza" setPlayers={setPlayers} />
         </div>
       </StyledLevelScreen>
     </motion.div>

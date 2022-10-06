@@ -4,20 +4,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import MenuBarComponent from "../components/MenuBarComponent";
-import PlayerComponent from "../components/PlayerComponent";
+import PlayerScoreComponent from "../components/PlayerScoreComponent";
 
 const StyledGameOverScreen = styled.div`
-  display: flex;
-  flex-direction: column;
-  color: white;
-`;
-
-const StyledGameScreen = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 700px;
+  margin: auto;
   height: 100%;
   color: white;
   gap: var(--gap-big);
@@ -41,19 +37,21 @@ export default function GameOverScreen({ players }) {
         x: { type: "spring", stiffness: 100, ease: "easeInOut" },
       }}
     >
-      <StyledGameScreen>
+      <StyledGameOverScreen>
         <MenuBarComponent title="Game Over" />
         <div className="game-over-screen-players">
-          {players.map((player) => (
-            <PlayerComponent
+          {players.reverse().map((player, id) => (
+            <PlayerScoreComponent
               name={player.name}
+              drunk={player.drunk}
+              place={id + 1}
               key={player.id}
               id={player.id}
             />
           ))}
         </div>
         <div></div>
-      </StyledGameScreen>
+      </StyledGameOverScreen>
     </motion.div>
   );
 }

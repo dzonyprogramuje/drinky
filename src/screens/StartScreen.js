@@ -7,12 +7,14 @@ import MainButtonComponent from "../components/MainButtonComponent";
 import AlkoholImage from "../images/alkohol.svg";
 
 const StyledStartScreen = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: space-between;
-  max-width: 500px;
-  margin: auto; */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
 
   h1 {
     color: var(--color-white);
@@ -45,7 +47,7 @@ export default function StartScreen() {
     <motion.div
       initial={{ x: "20%", opacity: 0 }}
       animate={{ x: "0", opacity: 1 }}
-      style={{ width: "100%" }}
+      style={{ width: "100%", height: "100%" }}
       transition={{
         opacity: { duration: 1 },
         x: { type: "spring", stiffness: 100, ease: "easeInOut" },

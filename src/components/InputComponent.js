@@ -47,8 +47,12 @@ export default function InputComponent({ placeholder, setPlayers }) {
     newUser.drunk = 0;
 
     if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
-      setPlayers((prevState) => [...prevState, newUser]);
-      nameInput.current.value = "";
+      if (nameInput.current.value.length > 2) {
+        setPlayers((prevState) => [...prevState, newUser]);
+        nameInput.current.value = "";
+      } else {
+        alert("Nazwa użytkownika musi składać się z przynajmniej 3 znaków");
+      }
     }
   };
 
