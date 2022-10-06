@@ -10,7 +10,7 @@ const StyledStartScreen = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   max-width: 700px;
@@ -27,10 +27,18 @@ const StyledStartScreen = styled.div`
     font-weight: 300;
   }
 
-  // TODO: adjust image that it works dynamic RWD
+  p.info {
+    color: var(--color-light-second);
+    font-size: var(--font-small);
+    a {
+      text-decoration: none;
+      color: var(--color-light-second);
+    }
+  }
+
   img.alkohol {
-    margin: 0 auto 0 10%;
-    width: 65%;
+    height: 200px;
+    margin: 0 auto 0 -30px;
   }
 
   .start-screen-text-container {
@@ -54,19 +62,26 @@ export default function StartScreen() {
       }}
     >
       <StyledStartScreen>
-        <img
-          src={AlkoholImage}
-          alt="Drinky - Pijacka Gra Alkoholowa - Start Screen"
-          className="alkohol"
-        />
-        <div className="start-screen-text-container">
-          <h1>Drinky</h1>
-          <h2>Pijacka gra alkoholowa</h2>
+        <div></div>
+        <div>
+          <img
+            src={AlkoholImage}
+            alt="Drinky - Pijacka Gra Alkoholowa - Start Screen"
+            className="alkohol"
+          />
+          <div className="start-screen-text-container">
+            <h1>Drinky</h1>
+            <h2>Pijacka gra alkoholowa</h2>
 
-          <MainButtonComponent fully to="/level">
-            Start
-          </MainButtonComponent>
+            <MainButtonComponent fully to="/level">
+              Start
+            </MainButtonComponent>
+          </div>
         </div>
+        <p className="info">
+          Version 1.0.0 |{" "}
+          <a href="https://dzonyprogramuje.com">dzonyprogramuje.com</a>
+        </p>
       </StyledStartScreen>
     </motion.div>
   );
