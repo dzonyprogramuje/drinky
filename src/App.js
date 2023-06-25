@@ -35,7 +35,7 @@ const StyledApp = styled.div`
 export default function App() {
   const location = useLocation();
   const luckyArray = [2, 4, 7, 10, 12];
-  const levelTimes = [60, 180, 360];
+  const levelTimes = [480, 300, 90];
   const [level, setLevel] = useState("0");
   const [players, setPlayers] = useState([]);
   const [gameScreen, setGameScreen] = useState(0);
